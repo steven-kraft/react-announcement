@@ -58,9 +58,9 @@ const Announcement: React.FunctionComponent<ComponentProps> = ({ title, subtitle
 
     const createAnnouncement = (): void => {
       setTimeout(() => {
-        if (cookies.banner !== 'shown' && showBanner === false) {
+        if (cookies.banner !== btoa(unescape(encodeURIComponent(title + subtitle))) && showBanner === false) {
           setShowBanner(true);
-          setCookie('banner', 'shown', {
+          setCookie('banner', btoa(unescape(encodeURIComponent(title + subtitle))), {
             expires: expirationDate
           });
         }
